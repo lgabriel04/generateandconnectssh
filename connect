@@ -1,0 +1,47 @@
+Here are the steps to generate and connect an SSH key to your GitHub account:
+
+Open Git Bash on your computer.
+
+Generate a new SSH key by typing the following command and pressing enter:
+
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+Note: Replace "your_email@example.com" with the email address associated with your GitHub account.
+
+Press enter to accept the default location to save the key.
+
+Enter a passphrase for your key when prompted or leave it blank for no passphrase.
+
+Add the SSH key to your ssh-agent by typing the following command and pressing enter:
+
+eval "$(ssh-agent -s)"
+
+Add the key to the ssh-agent by typing the following command and pressing enter:
+
+ssh-add ~/.ssh/id_ed25519
+
+Copy the contents of the public key to your clipboard by typing the following command and pressing enter:
+
+clip < ~/.ssh/id_ed25519.pub
+
+Note: If you're using macOS or Linux, use the following command instead: pbcopy < ~/.ssh/id_ed25519.pub
+
+Log in to your GitHub account in your web browser.
+
+Click on your profile icon and select "Settings" from the drop-down menu.
+
+Click on "SSH and GPG keys" from the menu on the left.
+
+Click on the "New SSH key" button.
+
+Give your key a name in the "Title" field.
+
+Paste the copied key into the "Key" field.
+
+Click the "Add SSH key" button.
+
+Verify that the key was added successfully by typing the following command and pressing enter:
+
+ssh -T git@github.com
+
+If successful, you should see a message that says "Hi username! You've successfully authenticated, but GitHub does not provide shell access."
